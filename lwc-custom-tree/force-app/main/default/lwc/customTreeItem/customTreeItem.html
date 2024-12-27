@@ -1,0 +1,25 @@
+<template>
+    <div class="slds-tree__item" data-key={item.key}>
+        <template if:false={isLeaf}>
+            <button class="slds-button slds-button_icon slds-button_icon-x-small slds-m-right_x-small" onclick={toggleExpand}>
+                <lightning-icon icon-name={iconName} alternative-text="Toggle" size="small"></lightning-icon>
+            </button>
+        </template>
+        <template if:true={item.selectable}>
+            <input type="checkbox" onchange={handleCheckboxChange} checked={item.checked} class="custom-checkbox"></input>
+        </template>
+        <span class="slds-tree__item-label" onclick={selectItem}>{item.label}</span>
+    </div>
+    <template if:true={item.expanded}>
+        <template if:true={item.items}>
+            <ul class="slds-tree__group">
+                <template for:each={item.items} for:item="child">
+                    <li key={child.key} class="slds-tree__branch">
+                        <c-custom-tree-item cascade-mode={cascadeMode} item={child} 
+                            onitemselect={handleItemSelect} data-key={child.key}></c-custom-tree-item>
+                    </li>
+                </template>
+            </ul>
+        </template>
+    </template>
+</template>

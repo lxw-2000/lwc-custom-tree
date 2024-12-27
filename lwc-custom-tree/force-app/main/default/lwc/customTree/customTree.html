@@ -1,0 +1,23 @@
+<template>
+    <lightning-card title={title}>
+        <template lwc:if={isLoadItems}>
+            <div class="search-container">
+                <slot name="slot1"></slot>
+                <lightning-input placeholder="Enter key word" variant="label-hidden" onchange={handleSearchChange}></lightning-input>
+                <lightning-button label="Search" onclick={handleSearch}></lightning-button>
+                <lightning-input label="Cascade" type="toggle" message-toggle-active="" message-toggle-inactive="" 
+                    checked={cascadeMode} onchange={handleCascadeModeChange}></lightning-input>
+                <lightning-button label="Full expansion" onclick={expandAll}></lightning-button>
+                <lightning-button label="Full fold" onclick={collapseAll}></lightning-button>
+            </div>
+            <template for:each={items} for:item="item">
+                <c-custom-tree-item data-key={item.key} key={item.key} item={item} cascade-mode={cascadeMode}
+                onitemselect={handleItemSelect} oncheckchanged={handleCheckChanged}></c-custom-tree-item>
+            </template>
+        </template>
+        <template lwc:else>
+            <h3><b>No role tree structure is available</b></h3>
+        </template>
+        <button class="back-to-top" onclick={scrollToTop} title="Back Top">⬆️</button>
+    </lightning-card>
+</template>
