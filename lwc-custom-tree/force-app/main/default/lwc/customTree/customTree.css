@@ -1,0 +1,47 @@
+.search-container {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+}
+
+.slds-tree__item {
+    display: block;
+    padding: 5px 0;
+}
+
+.slds-tree__group {
+    margin-left: 20px;
+    border-left: 1px solid #d8dde6;
+    padding-left: 10px;
+}
+
+.slds-tree__item-label {
+    cursor: pointer;
+    padding: 5px;
+    border-radius: 4px;
+    display: inline-block;
+}
+
+.slds-tree__item-label:hover {
+    background-color: #f4f6f9;
+}
+
+.back-to-top {
+    display: none;
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    z-index: 99;
+    border: none;
+    outline: none;
+    background-color: #007bff;
+    color: white;
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 50%;
+    font-size: 18px;
+}
+
+.back-to-top:hover {
+    background-color: #555;
+}
